@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 ruby '2.1.5'
+gem 'carrierwave', '0.10.0' 
+gem 'mini_magick', '4.1.0'
 # Bootstrap sass
 gem 'bootstrap-sass', '~> 3.3.3'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
