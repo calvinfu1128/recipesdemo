@@ -1,3 +1,30 @@
+chefs:
+
+what we have already:
+- Chef model and validations
+- chefs table with columns chefname and email
+
+What we need to do:
+- add passwords to the chefs table so chefs can be authenticated and logged index
+- user email as log in credentials, since email is unique
+- ability to register new chefs to use the app
+- ability to display chefs profile
+- ability to list chefs using the app
+- ability for chefs to login and logout of the app
+- restrict actions like create recipe, edit recipe and like feature to logged in chefs only
+- restrict edit of recipes by chefs who created the recipes
+
+Authentication updates:
+1) show recipe page -> ability to edit/update only own recipe
+2) navigation partial -> toggle menu, restrict new
+3) restrict thumbs up and thumbs down action to logged_in users only
+4) recipe - update to current_user
+5) like - update to current_user
+6) before_action :require_user, except: [:show, :index]
+7) before_action :require_some_user for chefs, only: [:edit, :update]
+
+
+
 testing specs for recipes:
 name: string
 summary: text
