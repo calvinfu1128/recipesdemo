@@ -1,4 +1,4 @@
-$navbar-default-bg: #312312;
+$navbar-default-bg: #f0596a;
 $light-orange: #ff8c00;
 $navbar-default-color: $light-orange;
 
@@ -7,6 +7,10 @@ $navbar-default-color: $light-orange;
 
 body {
   padding-top: 80px;
+}
+
+li {
+  list-style: none;
 }
 
 h1,h2,h3,h4 {
@@ -109,4 +113,8 @@ span.picture {
 
 .show_recipe {
   margin: 10px;
+}
+
+.jumbotron {
+  background: #ffdcc9;
 }

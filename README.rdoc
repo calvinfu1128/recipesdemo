@@ -28,9 +28,18 @@ Many to Many Association:
 2) requires a join table
 3) one object/row in one table can be associated with multiple rows in a 2nd table and vice-versa
 
-
-
-
+Things to move forward:
+1) migration to create reviews table, body = text_field, two foreign keys, reference chef_id, reference recipe_id
+2) build the Review model
+3) create tests for the spec, add validations to the review model
+4) build the association, has_many and belongs_to
+5) test out association in rails console
+-recipe.reviews
+-chef.reciews
+6) create routes
+7) authenticated chefs can create reviews, before_action require_user
+8) associate chef_id and recipe_id
+9) use existing code if applicable
 
 testing specs for recipes:
 name: string
