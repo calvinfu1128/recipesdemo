@@ -23,7 +23,10 @@ Authentication updates:
 6) before_action :require_user, except: [:show, :index]
 7) before_action :require_some_user for chefs, only: [:edit, :update]
 
-
+Many to Many Association:
+1) implment using has_many through association
+2) requires a join table
+3) one object/row in one table can be associated with multiple rows in a 2nd table and vice-versa
 
 testing specs for recipes:
 name: string
