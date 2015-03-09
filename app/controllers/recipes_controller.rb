@@ -3,7 +3,7 @@ class RecipesController < ApplicationController
   before_action :require_user, except: [:show, :index, :like]
   before_action :require_user_like, only: [:like]
   before_action :require_same_user, only: [:edit, :update]
-  
+  before_action :admin_user, only: [:destroy]
   
   
   def index
@@ -43,6 +43,12 @@ class RecipesController < ApplicationController
     end
   end
   
+  def destroy
+    Recipe.find(params[:id]).destroy
+    flash[:success] = "Recipe has been deleted successfully"
+    redirect_to recipes_path
+  end
+  
   def like
     like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
     if like.valid?
@@ -65,17 +71,20 @@ class RecipesController < ApplicationController
     end
   
     def require_same_user
-      if current_user != @recipe.chef
+      if current_user != @recipe.chef and !current_user.admin?
         flash[:danger] = "You can only edit your own recipe"
         redirect_to recipes_path
       end
     end
     
-      def require_user_like
-        if !logged_in?
-          flash[:danger] = "You must log in to perform that action"
-          redirect_to :back
-        end
+    def require_user_like
+      if !logged_in?
+        flash[:danger] = "You must log in to perform that action"
+        redirect_to :back
       end
+    end
   
+    def admin_user
+      redirect_to recipes_path unless current_user.admin?
+    end
 end
