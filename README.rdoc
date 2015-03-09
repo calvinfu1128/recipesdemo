@@ -28,6 +28,10 @@ Many to Many Association:
 2) requires a join table
 3) one object/row in one table can be associated with multiple rows in a 2nd table and vice-versa
 
+
+
+
+
 testing specs for recipes:
 name: string
 summary: text
