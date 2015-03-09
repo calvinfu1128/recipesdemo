@@ -18,9 +18,9 @@ Rails.application.routes.draw do
     end
   end
   
-  resources :chefs, except: [:new, :destroy]
+  resources :users, except: [:new, :destroy]
   
-  get '/register', to: 'chefs#new'
+  get '/register', to: 'users#new'
   
   get '/login', to: 'logins#new'
   post '/login', to: 'logins#create'

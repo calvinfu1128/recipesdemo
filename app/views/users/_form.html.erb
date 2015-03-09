@@ -1,10 +1,10 @@
-<%= render 'shared/errors', obj: @chef %>
+<%= render 'shared/errors', obj: @user %>
 
 <div class="row">
   <div class="col-md-8 col-md-offset-2 well">
-    <%= form_for @chef do |f| %>
-      <%= f.label :chefname %>
-      <%= f.text_field :chefname %>
+    <%= form_for @user do |f| %>
+      <%= f.label :username %>
+      <%= f.text_field :username %>
       
       <%= f.label :email %>
       <%= f.email_field :email %>
@@ -12,7 +12,7 @@
       <%= f.label :password %>
       <%= f.password_field :password %>
       
-      <%= f.submit(@chef.new_record? ? 'Register account' : 'Edit profile', class: "btn btn-success") %>
+      <%= f.submit(@user.new_record? ? 'Register account' : 'Edit profile', class: "btn btn-success") %>
     <% end %>
   </div>
 </div>

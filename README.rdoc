@@ -1,18 +1,18 @@
-chefs:
+users:
 
 what we have already:
-- Chef model and validations
-- chefs table with columns chefname and email
+- User model and validations
+- users table with columns username and email
 
 What we need to do:
-- add passwords to the chefs table so chefs can be authenticated and logged index
+- add passwords to the users table so users can be authenticated and logged index
 - user email as log in credentials, since email is unique
-- ability to register new chefs to use the app
-- ability to display chefs profile
-- ability to list chefs using the app
-- ability for chefs to login and logout of the app
-- restrict actions like create recipe, edit recipe and like feature to logged in chefs only
-- restrict edit of recipes by chefs who created the recipes
+- ability to register new users to use the app
+- ability to display users profile
+- ability to list users using the app
+- ability for users to login and logout of the app
+- restrict actions like create recipe, edit recipe and like feature to logged in users only
+- restrict edit of recipes by users who created the recipes
 
 Authentication updates:
 1) show recipe page -> ability to edit/update only own recipe
@@ -21,7 +21,7 @@ Authentication updates:
 4) recipe - update to current_user
 5) like - update to current_user
 6) before_action :require_user, except: [:show, :index]
-7) before_action :require_some_user for chefs, only: [:edit, :update]
+7) before_action :require_some_user for users, only: [:edit, :update]
 
 Many to Many Association:
 1) implment using has_many through association
@@ -29,16 +29,16 @@ Many to Many Association:
 3) one object/row in one table can be associated with multiple rows in a 2nd table and vice-versa
 
 Things to move forward:
-1) migration to create reviews table, body = text_field, two foreign keys, reference chef_id, reference recipe_id
+1) migration to create reviews table, body = text_field, two foreign keys, reference user_id, reference recipe_id
 2) build the Review model
 3) create tests for the spec, add validations to the review model
 4) build the association, has_many and belongs_to
 5) test out association in rails console
 -recipe.reviews
--chef.reciews
+-user.reviews
 6) create routes
-7) authenticated chefs can create reviews, before_action require_user
-8) associate chef_id and recipe_id
+7) authenticated users can create reviews, before_action require_user
+8) associate user_id and recipe_id
 9) use existing code if applicable
 
 testing specs for recipes:
@@ -52,14 +52,14 @@ description: text
 - summary must be between 10 to 150 characters
 - description must be present
 - description must be between 20 to 500 characters
-- chef_id must be present
+- user_id must be present
 
-testing specs for chefs:
-chefname: string
+testing specs for users:
+username: string
 email: string
 
-- chefname must be present
-- chefname must be between 3 to 40 characters
+- username must be present
+- username must be between 3 to 40 characters
 - email must be present
 - email must be unique (since we will use this for logins later)
 - email must be valid

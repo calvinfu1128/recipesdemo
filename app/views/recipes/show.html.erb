@@ -2,13 +2,13 @@
 
 <div class="row">
   <div class="col-md-4 pull-right center">
-    <%= link_to gravatar_for(@recipe.chef, size: 200), chef_path(@recipe.chef) %>
+    <%= link_to gravatar_for(@recipe.user, size: 200), user_path(@recipe.user) %>
     <p>
-      <h5>Brought to you by: <%= @recipe.chef.chefname %></h5>
+      <h5>Brought to you by: <%= @recipe.user.username %></h5>
     </p>
   </div>
   <div class="col-md-8">
-    <% if logged_in? and @recipe.chef == current_user || current_user.admin? %>
+    <% if logged_in? and @recipe.user == current_user || current_user.admin? %>
       <%= link_to "Edit this Recipe", edit_recipe_path(@recipe), class: "btn btn-success pull-right" %>
     <% end %>
     <% if logged_in? and current_user.admin? %>

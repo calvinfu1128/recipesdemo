@@ -20,7 +20,7 @@ class RecipesController < ApplicationController
   
   def create
     @recipe = Recipe.new(recipe_params)
-    @recipe.chef = current_user
+    @recipe.user = current_user
     
     if @recipe.save
       flash[:success] = "Your recipe was created successfully"
@@ -50,7 +50,7 @@ class RecipesController < ApplicationController
   end
   
   def like
-    like = Like.create(like: params[:like], chef: current_user, recipe: @recipe)
+    like = Like.create(like: params[:like], user: current_user, recipe: @recipe)
     if like.valid?
       flash[:success] = "Your selection was successful"
       redirect_to :back
@@ -71,7 +71,7 @@ class RecipesController < ApplicationController
     end
   
     def require_same_user
-      if current_user != @recipe.chef and !current_user.admin?
+      if current_user != @recipe.user and !current_user.admin?
         flash[:danger] = "You can only edit your own recipe"
         redirect_to recipes_path
       end
